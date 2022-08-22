@@ -51,4 +51,7 @@ names(qe)
 
 # Manipular dados --------------------------------------------------------------------------------------------------------------------------
 
-
+qe1 <- qe %>%
+  select(Entity, Year, PISA..Mean.performance.on.the.reading.scale) %>%
+  rename(performance_leitura = PISA..Mean.performance.on.the.reading.scale) %>%
+  view()
