@@ -14,5 +14,13 @@
 ### PISA study was carried out in 1997 and since then it was 
 ### repeated every three years.
 
+# Pacotes necessários para as análises -----------------------------------------------------------------------------------------------------
 
+library(tidyverse)
+
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+qe <- read.csv("pisa-test-score-mean-performance-on-the-reading-scale.csv") 
+view(qe)
+names(qe)
 
