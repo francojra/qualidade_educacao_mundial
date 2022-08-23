@@ -42,6 +42,7 @@
 # Pacotes necessários para as análises -----------------------------------------------------------------------------------------------------
 
 library(tidyverse)
+library(RColorBrewer)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -69,11 +70,13 @@ qe2 <- qe1 %>%
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
-ggplot(qe2, aes(x = Entity, y = media)) +
+ggplot(qe2, aes(x = Entity, y = media, fill = Entity)) +
   geom_col() +
   geom_errorbar(aes(x = Entity, y = media,
                 ymin = media - se, ymax = media + se),
                 size = 0.85, width = 0.3) +
-  coord_flip()
+  scale_fill_brewer(palette = "Paired") +
+  coord_flip() +
+  theme(legend.position = "none")
 
 
