@@ -68,6 +68,16 @@ qe2 <- qe1 %>%
             n = n(), se = sd/sqrt(n)) %>%
   view()
 
+qe3 <- qe %>%
+  select(Entity, Year, PISA..Mean.performance.on.the.reading.scale) %>%
+  rename(performance_leitura = PISA..Mean.performance.on.the.reading.scale) %>%
+  filter(Entity %in% c("United States", "Canada", "Mexico",
+                       "Brazil", "Colombia", "Peru",
+                       "Argentina", "Chile", "Uruguai",
+                       "Australia", "Russia", "China"),
+         Year == "2015") %>%
+  view()
+
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
 ggplot(qe2, aes(x = fct_reorder(Entity, media), 
@@ -79,7 +89,17 @@ ggplot(qe2, aes(x = fct_reorder(Entity, media),
   scale_fill_brewer(palette = "Paired") +
   coord_flip() +
   labs(y = "Pontuação na Performance de Leitura",
-       x = "Países") +
+       x = "Países",
+       title = "PISA Test Score entre 2000 e 2015") +
   theme(legend.position = "none")
 
-
+ggplot(qe3, aes(x = Entity, 
+                y = performance_leitura, 
+                fill = Entity)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Paired") +
+  coord_flip() +
+  labs(y = "Pontuação na Performance de Leitura",
+       x = "Países",
+       fill = "PISA Test Score em 2015") +
+  theme(legend.position = "none")
