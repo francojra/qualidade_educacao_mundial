@@ -54,4 +54,8 @@ names(qe)
 qe1 <- qe %>%
   select(Entity, Year, PISA..Mean.performance.on.the.reading.scale) %>%
   rename(performance_leitura = PISA..Mean.performance.on.the.reading.scale) %>%
+  filter(Entity %in% c("United States", "Canada", "Mexico",
+                       "Brazil", "Colombia", "Peru",
+                       "Argentina", "Chile", "Uruguai",
+                       "Australia", "Russia", "China")) %>%
   view()
