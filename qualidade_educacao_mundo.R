@@ -59,3 +59,21 @@ qe1 <- qe %>%
                        "Argentina", "Chile", "Uruguai",
                        "Australia", "Russia", "China")) %>%
   view()
+
+qe2 <- qe1 %>%
+  group_by(Entity) %>%
+  summarise(media = mean(performance_leitura),
+            sd = sd(performance_leitura),
+            n = n(), se = sd/sqrt(n)) %>%
+  view()
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+ggplot(qe2, aes(x = Entity, y = media)) +
+  geom_col() +
+  geom_errorbar(aes(x = Entity, y = media,
+                ymin = media - se, ymax = media + se),
+                size = 0.85, width = 0.3) +
+  coord_flip()
+
+
