@@ -78,6 +78,8 @@ ggplot(qe2, aes(x = fct_reorder(Entity, media),
                 size = 0.85, width = 0.3) +
   scale_fill_brewer(palette = "Paired") +
   coord_flip() +
+  labs(y = "Pontuação na Performance de Leitura",
+       x = "Países") +
   theme(legend.position = "none")
 
 
