@@ -93,7 +93,7 @@ ggplot(qe2, aes(x = fct_reorder(Entity, media),
        title = "PISA Test Score entre 2000 e 2015") +
   theme(legend.position = "none")
 
-ggplot(qe3, aes(x = Entity, 
+ggplot(qe3, aes(x = fct_reorder(Entity, performance_leitura), 
                 y = performance_leitura, 
                 fill = Entity)) +
   geom_col() +
@@ -101,5 +101,5 @@ ggplot(qe3, aes(x = Entity,
   coord_flip() +
   labs(y = "Pontuação na Performance de Leitura",
        x = "Países",
-       fill = "PISA Test Score em 2015") +
+       title = "PISA Test Score em 2015") +
   theme(legend.position = "none")
