@@ -70,7 +70,8 @@ qe2 <- qe1 %>%
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
-ggplot(qe2, aes(x = Entity, y = media, fill = Entity)) +
+ggplot(qe2, aes(x = fct_reorder(Entity, media), 
+                y = media, fill = Entity)) +
   geom_col() +
   geom_errorbar(aes(x = Entity, y = media,
                 ymin = media - se, ymax = media + se),
