@@ -102,18 +102,20 @@ ggplot(qe3, aes(x = fct_reorder(Entity, performance_leitura),
   labs(y = "Pontuação na Performance de Leitura",
        x = "Países",
        title = "PISA Test Score em 2015") +
-  theme(legend.position = "none")
+  theme(legend.position = "none",
+        axis.title = element_text(size = 12))
 
 qe1$Year <- as.factor(qe1$Year)
 
 ggplot(qe1, aes(x = Year, 
                 y = performance_leitura, 
                 group = Entity, color = Entity)) +
-  geom_point() +
-  geom_line() +
+  geom_point(size = 3) +
+  geom_line(size = 1.6) +
   scale_color_brewer(palette = "Paired") +
   labs(y = "Pontuação na Performance de Leitura",
        x = "Anos",
        color = "Países",
        title = "PISA Test Score") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        axis.title = element_text(size = 12))
